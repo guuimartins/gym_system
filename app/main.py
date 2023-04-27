@@ -37,7 +37,7 @@ def find_by_id(id: int, db: Session = Depends(get_db)):
 def delete_by_id(id: int, db: Session = Depends(get_db)):
     if not TrainerRepository.exists_by_id(db, id):
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND, detail="Trainer não encontrado"
+            status_code=status.HTTP_404_NOT_FOUND, detail="Personal Trainer não encontrado"
         )
     TrainerRepository.delete_by_id(db, id)
     return Response(status_code=status.HTTP_204_NO_CONTENT)
