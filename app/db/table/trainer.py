@@ -1,6 +1,6 @@
 from sqlalchemy.schema import Column
 from sqlalchemy.types import String, Integer, Text
-from database import Base
+from app.db.database import Base
 
 
 class Trainer(Base):

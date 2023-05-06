@@ -1,15 +1,14 @@
 from fastapi import FastAPI, Depends, HTTPException, status, Response
 from sqlalchemy.orm import Session
 
-from app.db.table.trainer import Trainer
 from app.db.database import engine, Base, get_db
-from app.repository.trainerRepository import TrainerRepository
 from app.db.schema.trainerSchema import TrainerRequest, TrainerResponse
+from app.db.table.trainer import Trainer
+from app.repository.trainerRepository import TrainerRepository
 
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
-
 
 @app.post("/api/trainer", response_model=TrainerResponse, status_code=status.HTTP_201_CREATED)
 def create(request: TrainerRequest, db: Session = Depends(get_db)):
