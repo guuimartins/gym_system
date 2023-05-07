@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 
-from app.db.table.trainer import Trainer
+from app.trainers.db.table.trainer import Trainer
 
 
 class TrainerRepository:
