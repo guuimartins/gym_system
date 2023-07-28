@@ -31,16 +31,16 @@ volumes:
   node_studant:
     driver: local-persist
     driver_opts:
-      mountpoint: /opt/gym_system/studant
+      mountpoint: /opt/gym_system/src/studant
   node_trainer:
     driver: local-persist
     driver_opts:
-      mountpoint: /opt/gym_system/trainer
+      mountpoint: /opt/gym_system/src/trainer
   node_types:
     driver: local-persist
     driver_opts:
-      mountpoint: /opt/gym_system/types
+      mountpoint: /opt/gym_system/src/types
   gym_mysql:
     driver: local-persist
     driver_opts:
-      mountpoint: /opt/gym_system/db
+      mountpoint: /opt/gym_system/src/db
