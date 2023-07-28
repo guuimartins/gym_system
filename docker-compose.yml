@@ -7,10 +7,6 @@ services:
     restart: unless-stopped
     ports:
       - "80:80"
-    volumes:
-      - node_studant:/appGym/src/studant
-      - node_trainer:/appGym/src/trainer
-      - node_types:/appGym/src/types
 
   db:
     image: mysql:5.7
