@@ -5,6 +5,7 @@ WORKDIR /appGym
 COPY . /appGym
 
 RUN npm install
+RUN npm run build
 
 COPY . .
 
