@@ -40,15 +40,15 @@ volumes:
   node_studant:
     driver: local-persist
     driver_opts:
-      mountpoint: /opt/gym_system/src/studant
+      mountpoint: ./gym_system/src/studant
   node_trainer:
     driver: local-persist
     driver_opts:
-      mountpoint: /opt/gym_system/src/trainer
+      mountpoint: ./gym_system/src/trainer
   node_types:
     driver: local-persist
     driver_opts:
-      mountpoint: /opt/gym_system/src/types
+      mountpoint: ./gym_system/src/types
   gym_mysql:
     driver: local-persist
     driver_opts:
