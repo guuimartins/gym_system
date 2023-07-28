@@ -1,0 +1,46 @@
+version: '3.5'
+
+services:
+  app:
+    build:
+      context: /opt/gym_system
+      dockerfile: Dockerfile
+    container_name: app_gym
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - node_studant:/appGym/studant
+      - node_trainer:/appGym/trainer
+      - node_types:/appGym/types
+
+  db:
+    image: mysql:5.7
+    restart: unless-stopped
+    environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: gymdb
+        MYSQL_USER: root
+        MYSQL_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - gym_mysql:/var/lib/mysql
+
+volumes:
+  node_studant:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /opt/gym_system/studant
+  node_trainer:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /opt/gym_system/trainer
+  node_types:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /opt/gym_system/types
+  gym_mysql:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /opt/gym_system/db
