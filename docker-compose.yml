@@ -43,4 +43,4 @@ volumes:
   gym_mysql:
     driver: local-persist
     driver_opts:
-      mountpoint: /opt/gym_system/src/db
+      mountpoint: /opt/gym_system/db
