@@ -1,11 +1,25 @@
-FROM node:14
+# Use a imagem do Ubuntu como base
+FROM ubuntu:latest
 
-WORKDIR /appGym
+SHELL ["/bin/bash"]
 
-COPY . /appGym
+ENV LANG C.UTF-8
+
+RUN apt-get update && \
+    apt-get install -y mysql-server && \
+    apt-get install -y nodejs npm
+
+WORKDIR /app
+
+COPY package*.json ./
 
 RUN npm install
 
 COPY . .
 
-CMD ["node", "dist/main"]
+EXPOSE 3306
+
+RUN mkdir appGym \
+    && chmod -R 777 appGym
+
+# CMD ["npm", "start"]

@@ -2,9 +2,7 @@ version: '3.5'
 
 services:
   app:
-    build:
-      context: /opt/gym_system
-      dockerfile: Dockerfile
+    image: node:14
     container_name: app_gym
     restart: unless-stopped
     ports:
@@ -25,6 +23,17 @@ services:
     ports:
       - "3306:3306"
     volumes:
+      - gym_mysql:/var/lib/mysql
+
+  ubuntu:
+    image: ubuntu:latest
+    container_name: ubuntu_gym
+    restart: unless-stopped
+    command: sleep infinity
+    volumes:
+      - node_studant:/appGym/src/studant
+      - node_trainer:/appGym/src/trainer
+      - node_types:/appGym/src/types
       - gym_mysql:/var/lib/mysql
 
 volumes:
