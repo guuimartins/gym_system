@@ -10,9 +10,9 @@ services:
     ports:
       - "80:80"
     volumes:
-      - node_studant:/appGym/studant
-      - node_trainer:/appGym/trainer
-      - node_types:/appGym/types
+      - node_studant:/appGym/src/studant
+      - node_trainer:/appGym/src/trainer
+      - node_types:/appGym/src/types
 
   db:
     image: mysql:5.7
