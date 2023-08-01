@@ -7,6 +7,8 @@ export const trainers: Trainer[] = [
         phone: "11998764098",
         cref: "180180180",
         email: "fernandojgrangeiro@gmail.com",
+        password:"",
+        refreshToken:""
     },
     {
         id: "2",
@@ -14,6 +16,8 @@ export const trainers: Trainer[] = [
         phone: "11998764098",
         cref: "180180180",
         email: "fernandojgrangeiro@gmail.com",
+        password:"",
+        refreshToken:""
     },
     {
         id: "3",
@@ -21,6 +25,8 @@ export const trainers: Trainer[] = [
         phone: "11998764098",
         cref: "180180180",
         email: "fernandojgrangeiro@gmail.com",
+        password:"",
+        refreshToken:""
     },
     {
         id: "4",
@@ -28,6 +34,8 @@ export const trainers: Trainer[] = [
         phone: "11998764098",
         cref: "180180180",
         email: "fernandojgrangeiro@gmail.com",
+        password:"",
+        refreshToken:""
     },
     {
         id: "5",
@@ -35,6 +43,8 @@ export const trainers: Trainer[] = [
         phone: "11998764098",
         cref: "180180180",
         email: "fernandojgrangeiro@gmail.com",
+        password:"",
+        refreshToken:""
     },
     {
         id: "6",
@@ -42,6 +52,8 @@ export const trainers: Trainer[] = [
         phone: "11998764098",
         cref: "180180180",
         email: "fernandojgrangeiro@gmail.com",
+        password:"",
+        refreshToken:""
     },
     {
         id: "7",
@@ -49,6 +61,8 @@ export const trainers: Trainer[] = [
         phone: "11998764098",
         cref: "180180180",
         email: "fernandojgrangeiro@gmail.com",
+        password:"",
+        refreshToken:""
     },
     {
         id: "8",
@@ -56,6 +70,8 @@ export const trainers: Trainer[] = [
         phone: "11998764098",
         cref: "180180180",
         email: "fernandojgrangeiro@gmail.com",
+        password:"",
+        refreshToken:""
     }
 
 ]

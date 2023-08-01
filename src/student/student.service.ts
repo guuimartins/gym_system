@@ -15,6 +15,10 @@ export class StudentService {
         return this.studentList;
     }
 
+    addStudent(): Student {
+        return this.studentList[0]
+    }
+
     getStudentById(id: string): Student {
         const student = this.studentList.find(student => student.id === id);
         if (!student) {
