@@ -4,4 +4,6 @@ export interface Trainer {
     cref: string;
     phone: string;
     email: string;
+    password: string;
+    refreshToken: string;
 }

@@ -1,5 +1,27 @@
-import {Controller, Get, HttpException, HttpStatus, Param} from '@nestjs/common';
+import {Body, Controller, Get, HttpException, HttpStatus, Param, Post} from '@nestjs/common';
 import {StudentService} from "./student.service";
+import {IsEmail, IsNumber, IsPhoneNumber, IsString} from "class-validator";
+
+export class StudentDTO {
+    @IsString()
+    name: string
+
+    @IsPhoneNumber()
+    phone: string
+
+    @IsEmail()
+
+    email: string
+
+    @IsNumber()
+    height: number;
+
+    @IsNumber()
+    weight: number;
+
+    @IsNumber()
+    dateOfBirth: number;
+}
 
 @Controller('student')
 export class StudentController {
@@ -24,5 +46,15 @@ export class StudentController {
         } catch (error) {
             throw new HttpException(error.message, HttpStatus.NOT_FOUND);
         }
+    }
+
+    @Post()
+    addStudent(@Body() studentDTO: StudentDTO) {
+        try {
+            return this.studentService.addStudent()
+        } catch (error) {
+            throw new HttpException(error.message, HttpStatus.NOT_FOUND);
+        }
+
     }
 }
