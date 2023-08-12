@@ -1,25 +1,13 @@
-# Use a imagem do Ubuntu como base
-FROM ubuntu:latest
-
-SHELL ["/bin/bash"]
-
-ENV LANG C.UTF-8
-
-RUN apt-get update && \
-    apt-get install -y mysql-server && \
-    apt-get install -y nodejs npm
+FROM node:16-alpine
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY package.json ./
 
 RUN npm install
 
 COPY . .
 
-EXPOSE 3306
+EXPOSE 3000
 
-RUN mkdir appGym \
-    && chmod -R 777 appGym
-
-# CMD ["npm", "start"]
+CMD ["npm", "start"]
