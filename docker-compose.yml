@@ -3,7 +3,7 @@ version: '3.8'
 services:
   app:
     build:
-      context: /opt/gym_system
+      context: ./gym_system
       dockerfile: Dockerfile
     container_name: app
     restart: always

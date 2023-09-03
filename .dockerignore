@@ -3,5 +3,4 @@
 docker-compose.yml
 Dockerfile
 db
-node_modules
 README.md
