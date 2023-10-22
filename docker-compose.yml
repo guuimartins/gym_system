@@ -3,26 +3,29 @@ version: '3.8'
 services:
   app:
     build:
-      context: /opt/gym_system
+      context: .
       dockerfile: Dockerfile
     container_name: app
-    restart: unless-stopped
+    restart: always
     ports:
-      - 3000:3000
-    volumes:
-      - /opt/gym_system:/app
+      - "3000:3000"
+    # volumes:
+    #   - ".:/usr/src/app"
+    #   - "/usr/src/app/node_modules" --> arquivos removidos de volume. Será necessário realizar o build da imagem para que seja atualizado o container.
 
   db:
     image: mysql:8.0
-    restart: unless-stopped
+    restart: always
     environment:
-        - MYSQL_DATABASE=admin
-        - MYSQL_ROOT_PASSWORD=123123
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=admin
+      - MYSQL_ROOT_PASSWORD=12345
     ports:
-        - '3306:3306'
+      - "3306:3306"
     volumes:
-        - db:/var/lib/mysql
-        - /opt/gym_system/db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - db:/var/lib/mysql
+      - ./gym_system/db/init.sql:/docker-entrypoint-initdb.d/init.sql
 
 volumes:
   db:
+  driver:
