@@ -9,13 +9,7 @@ services:
     restart: always
     ports:
       - "3000:3000"
-    # volumes:
-    #   - ".:/usr/src/app"
-    #   - "/usr/src/app/node_modules" 
-    
-    # --> arquivos removidos de volume.
-    # Será necessário realizar o build da imagem para que seja atualizado o container.
-
+      
   db:
     image: mysql:8.0
     restart: always
