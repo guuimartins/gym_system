@@ -2,12 +2,6 @@ name: build and push docker
 
 on:
   workflow_dispatch:
-    inputs:
-      tag:
-        description: 'Tag for the Docker image (optional)'
-        required: false
-        type: string
-        default: ''
 
 jobs:
   build-and-push:
@@ -28,6 +22,4 @@ jobs:
           context: .
           file: Dockerfile
           push: true
-          tags: |
-            gmartins882/gymsystem:latest
-            ${{ inputs.tag != '' && format('gmartins882/gymsystem:{0}', inputs.tag) || '' }}
+          tags: gmartins882/gymsystem:latest
