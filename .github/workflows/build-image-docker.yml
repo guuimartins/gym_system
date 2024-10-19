@@ -6,6 +6,7 @@ on:
       tag:
         description: 'Tag for the Docker image (optional)'
         required: false
+        type: string
         default: ''
 
 jobs:
@@ -29,4 +30,4 @@ jobs:
           push: true
           tags: |
             gmartins882/gymsystem:latest
-            ${{ github.event.inputs.tag != '' && format('gmartins882/gymsystem:{0}', github.event.inputs.tag) || '' }}
+            ${{ inputs.tag != '' && format('gmartins882/gymsystem:{0}', inputs.tag) || '' }}
