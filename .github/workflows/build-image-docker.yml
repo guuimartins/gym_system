@@ -1,18 +1,16 @@
 name: build and push docker
 
 on:
-  push:
-    branches:
-      [main]
-  pull_request:
-    branches:
-      [main]
   workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag for the Docker image (optional)'
+        required: false
+        default: ''
 
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout project
         uses: actions/checkout@v4.2.1
@@ -23,16 +21,7 @@ jobs:
           username: ${{ secrets.REGISTRY_USER }}
           password: ${{ secrets.REGISTRY_PASS }}
 
-      - name: Extract GitHub ref
-        id: ref
-        run: |
-          if [[ $GITHUB_REF == refs/tags/* ]]; then
-            echo "TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
-          else
-            echo "TAG=" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Construction image docker
+      - name: Build and push Docker image
         uses: docker/build-push-action@v6.9.0
         with:
           context: .
@@ -40,4 +29,4 @@ jobs:
           push: true
           tags: |
             gmartins882/gymsystem:latest
-            ${{ steps.ref.outputs.TAG != '' && format('gmartins882/gymsystem:{0}', steps.ref.outputs.TAG) || '' }}
+            ${{ github.event.inputs.tag != '' && format('gmartins882/gymsystem:{0}', github.event.inputs.tag) || '' }}
