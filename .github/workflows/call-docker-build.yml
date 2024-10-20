@@ -1,0 +1,19 @@
+# .github/workflows/call-docker-build.yml
+name: Build and Push Docker Image
+
+on:
+  push:
+    branches:
+      [main]
+  pull_request:
+    branches:
+      [main]
+  workflow_dispatch:
+
+jobs:
+  call-docker-build:
+    uses: your-repo/actions-reusable/.github/workflows/docker-build.yml@main
+    with:
+      docker_username: ${{ secrets.REGISTRY_USER }}
+      docker_password: ${{ secrets.REGISTRY_PASS }}
+      image_name: gmartins882/gymsystem
