@@ -12,7 +12,7 @@ on:
 
 jobs:
   call-docker-build:
-    uses: your-repo/actions-reusable/.github/workflows/build-image-docker.yml@main
+    uses: .github/workflows/build-image-docker.yml@main
     with:
       docker_username: ${{ secrets.REGISTRY_USER }}
       docker_password: ${{ secrets.REGISTRY_PASS }}
