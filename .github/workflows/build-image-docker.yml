@@ -1,10 +1,21 @@
-name: build and push docker
+# .github/workflows/docker-build.yml
+name: Reusable Docker Build and Push Workflow
 
 on:
-  pull_request:
-    branches:
-      [main]
-  workflow_dispatch:
+  workflow_call:
+    inputs:
+      docker_username:
+        description: "Usuário do Docker"
+        required: true
+        type: string
+      docker_password:
+        description: "Senha do Docker"
+        required: true
+        type: string
+      image_name:
+        description: "Nome da imagem Docker"
+        required: true
+        type: string
 
 jobs:
   build-and-push:
@@ -17,8 +28,8 @@ jobs:
       - name: Docker Login
         uses: docker/login-action@v3.3.0
         with:
-          username: ${{ secrets.REGISTRY_USER }}
-          password: ${{ secrets.REGISTRY_PASS }}
+          username: ${{ inputs.docker_username }}
+          password: ${{ inputs.docker_password }}
 
       - name: Extract GitHub ref
         id: ref
@@ -36,5 +47,5 @@ jobs:
           file: Dockerfile
           push: true
           tags: |
-            gmartins882/gymsystem:latest
-            ${{ steps.ref.outputs.TAG != '' && format('gmartins882/gymsystem:{0}', steps.ref.outputs.TAG) || '' }}
+            ${{ inputs.image_name }}:latest
+            ${{ steps.ref.outputs.TAG != '' && format('{0}:{1}', inputs.image_name, steps.ref.outputs.TAG) || '' }}
