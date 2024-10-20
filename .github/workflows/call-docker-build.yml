@@ -1,6 +1,5 @@
 # .github/workflows/call-docker-build.yml
 name: Build and Push Docker Image
-
 on:
   push:
     branches:
@@ -9,11 +8,11 @@ on:
     branches:
       [main]
   workflow_dispatch:
-
 jobs:
   call-docker-build:
     uses: ./.github/workflows/build-image-docker.yml
     with:
-      docker_username: ${{ secrets.REGISTRY_USER }}
-      docker_password: ${{ secrets.REGISTRY_PASS }}
       image_name: gmartins882/gymsystem
+    secrets:
+      DOCKER_USERNAME: ${{ secrets.REGISTRY_USER }}
+      DOCKER_PASSWORD: ${{ secrets.REGISTRY_PASS }}
