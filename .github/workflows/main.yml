@@ -1,5 +1,6 @@
 # .github/workflows/call-docker-build.yml
 name: Build and Push Docker Image
+
 on:
   push:
     branches:
@@ -8,6 +9,12 @@ on:
     branches:
       [main]
   workflow_dispatch:
+    inputs:
+      call-docker-build:
+        description: 'Build and push docker'
+        type: boolean
+        default: false
+
 jobs:
   call-docker-build:
     uses: ./.github/workflows/build-image-docker.yml
