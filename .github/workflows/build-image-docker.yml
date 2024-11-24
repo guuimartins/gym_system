@@ -1,6 +1,7 @@
 # .github/workflows/docker-build.yml
 name: Reusable Docker Build and Push Workflow
 on:
+  workflow_dispatch:
   workflow_call:
     inputs:
       image_name:
